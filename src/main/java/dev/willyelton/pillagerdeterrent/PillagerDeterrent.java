@@ -40,6 +40,6 @@ public class PillagerDeterrent {
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public PillagerDeterrent(IEventBus modEventBus, ModContainer container) {
-
+        Registration.init(modEventBus);
     }
 }
