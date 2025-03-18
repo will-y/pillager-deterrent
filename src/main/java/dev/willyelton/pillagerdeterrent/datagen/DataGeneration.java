@@ -15,5 +15,9 @@ public class DataGeneration {
         PackOutput packOutput = generator.getPackOutput();
 
         generator.addProvider(event.includeClient(), new PillagerDeterrentItemModels(packOutput, event.getExistingFileHelper()));
+
+        PillagerDeterrentBlockTags blockTags = new PillagerDeterrentBlockTags(packOutput, event.getLookupProvider(), event.getExistingFileHelper());
+        generator.addProvider(event.includeClient(), blockTags);
+        generator.addProvider(event.includeClient(), new PillagerDeterrentItemTags(packOutput, event.getLookupProvider(), blockTags.contentsGetter(), event.getExistingFileHelper()));
     }
 }

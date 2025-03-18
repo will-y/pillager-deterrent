@@ -1,5 +1,6 @@
 package dev.willyelton.pillagerdeterrent;
 
+import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -37,7 +38,11 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 @Mod(PillagerDeterrent.MODID)
 public class PillagerDeterrent {
     public static final String MODID = "pillager_deterrent";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
+
+    public static ResourceLocation rl(String path) {
+        return ResourceLocation.fromNamespaceAndPath(MODID, path);
+    }
 
     public PillagerDeterrent(IEventBus modEventBus, ModContainer container) {
         Registration.init(modEventBus);
