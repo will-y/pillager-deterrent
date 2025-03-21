@@ -1,6 +1,6 @@
 {
   "itemGroup.pillager_deterrent": "Pillager Deterrent",
-  "item.pillager_deterrent.pillager_ring": "Pillager Ring",
+  "item.pillager_deterrent.pillager_ring": "Pillager Warding Ring",
   "block.pillager_deterrent.pillager_warding_banner": "Pillager Warding Banner",
   "lore.pillager_deterrent.ring": "Prevents Pillager Patrol Spawns",
   "lore.pillager_deterrent.banner": "Prevents Pillager Patrol Spawns Within %d Blocks",
