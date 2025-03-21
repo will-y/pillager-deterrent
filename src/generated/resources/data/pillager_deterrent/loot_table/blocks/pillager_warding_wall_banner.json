@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:copy_name",
+              "source": "block_entity"
+            },
+            {
+              "function": "minecraft:copy_components",
+              "include": [
+                "minecraft:banner_patterns",
+                "minecraft:hide_additional_tooltip"
+              ],
+              "source": "block_entity"
+            }
+          ],
+          "name": "pillager_deterrent:pillager_warding_banner"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "pillager_deterrent:blocks/pillager_warding_wall_banner"
+}

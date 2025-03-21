@@ -22,7 +22,6 @@ import java.util.function.Predicate;
 
 @Mixin(PatrolSpawner.class)
 public abstract class PatrolSpawnerMixin {
-    // TODO: Target is the bytecode name (accesstransformer)
     @Inject(method = "tick", cancellable = true,
             at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerLevel;getCurrentDifficultyAt(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/DifficultyInstance;"))
     public void tick(ServerLevel level, boolean spawnEnemies, boolean spawnFriendlies, CallbackInfoReturnable<Integer> cir, @Local Player player, @Local BlockPos.MutableBlockPos pos) {

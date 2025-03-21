@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "pillager_deterrent:block/pillager_warding_banner"
-  }
-}
