@@ -1,6 +1,7 @@
 package dev.willyelton.pillagerdeterrent.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
+import dev.willyelton.pillagerdeterrent.Config;
 import dev.willyelton.pillagerdeterrent.PillagerDeterrent;
 import dev.willyelton.pillagerdeterrent.Registration;
 import dev.willyelton.pillagerdeterrent.compat.CuriosCompatability;
@@ -41,6 +42,6 @@ public abstract class PatrolSpawnerMixin {
     @Unique
     private static boolean pillager_deterrent$findWardingBlock(ServerLevel level, BlockPos spawnPosition) {
         return level.getPoiManager().findClosest(poiTypeHolder -> poiTypeHolder.is(Registration.PILLAGER_WARDING_BANNER_POI.getKey()),
-                spawnPosition, 128, PoiManager.Occupancy.ANY).isPresent();
+                spawnPosition, Config.BANNER_RANGE.get(), PoiManager.Occupancy.ANY).isPresent();
     }
 }

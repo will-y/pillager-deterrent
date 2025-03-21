@@ -27,8 +27,8 @@ public class PillagerDeterrentLootTables extends VanillaBlockLoot {
 
     @Override
     protected void generate() {
-        createComponentSavingTable(Registration.PILLAGER_WARDING_BANNER.get(), Registration.PILLAGER_WARDING_BANNER_BLOCK_ITEM.get(), DataComponents.BANNER_PATTERNS, DataComponents.HIDE_ADDITIONAL_TOOLTIP);
-        createComponentSavingTable(Registration.PILLAGER_WARDING_WALL_BANNER.get(), Registration.PILLAGER_WARDING_BANNER_BLOCK_ITEM.get(), DataComponents.BANNER_PATTERNS, DataComponents.HIDE_ADDITIONAL_TOOLTIP);
+        createComponentSavingTable(Registration.PILLAGER_WARDING_BANNER.get(), Registration.PILLAGER_WARDING_BANNER_BLOCK_ITEM.get(), DataComponents.BANNER_PATTERNS);
+        createComponentSavingTable(Registration.PILLAGER_WARDING_WALL_BANNER.get(), Registration.PILLAGER_WARDING_BANNER_BLOCK_ITEM.get(), DataComponents.BANNER_PATTERNS);
     }
 
     @Override

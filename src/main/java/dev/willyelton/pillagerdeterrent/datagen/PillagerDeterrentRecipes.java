@@ -28,5 +28,14 @@ public class PillagerDeterrentRecipes extends RecipeProvider {
                 .define('p', Items.OMINOUS_BOTTLE)
                 .unlockedBy("has_ominous_bottle", has(Items.OMINOUS_BOTTLE))
                 .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Registration.PILLAGER_RING.get())
+                .pattern(" i ")
+                .pattern("ipi")
+                .pattern(" i ")
+                .define('i', Items.IRON_INGOT)
+                .define('p', Items.OMINOUS_BOTTLE)
+                .unlockedBy("has_ominous_bottle", has(Items.OMINOUS_BOTTLE))
+                .save(recipeOutput);
     }
 }

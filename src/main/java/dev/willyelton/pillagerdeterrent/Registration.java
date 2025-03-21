@@ -1,21 +1,20 @@
 package dev.willyelton.pillagerdeterrent;
 
 import dev.willyelton.pillagerdeterrent.block.WardingBannerBlock;
+import dev.willyelton.pillagerdeterrent.block.WardingBannerWallBlock;
+import dev.willyelton.pillagerdeterrent.item.PillagerWardingBannerItem;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.util.Unit;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.item.BannerItem;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.WallBannerBlock;
 import net.minecraft.world.level.block.entity.BannerPattern;
 import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.minecraft.world.level.block.entity.BannerPatterns;
@@ -24,6 +23,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.List;
 import java.util.Set;
 
 public class Registration {
@@ -32,12 +32,12 @@ public class Registration {
     public static final DeferredRegister<PoiType> POI_TYPES = DeferredRegister.create(Registries.POINT_OF_INTEREST_TYPE, PillagerDeterrent.MODID);
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, PillagerDeterrent.MODID);
 
-    public static final DeferredHolder<Item, Item> PILLAGER_RING = ITEMS.registerSimpleItem("pillager_ring", new Item.Properties().stacksTo(1));
+    public static final DeferredHolder<Item, Item> PILLAGER_RING = ITEMS.registerSimpleItem("pillager_ring", new Item.Properties().stacksTo(1).component(DataComponents.LORE, new ItemLore(List.of(Component.translatable("lore.pillager_deterrent.ring", "test")))));
 
     public static final DeferredHolder<Block, Block> PILLAGER_WARDING_BANNER = BLOCKS.registerBlock("pillager_warding_banner", WardingBannerBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_BANNER));
-    public static final DeferredHolder<Block, Block> PILLAGER_WARDING_WALL_BANNER = BLOCKS.registerBlock("pillager_warding_wall_banner", properties -> new WallBannerBlock(DyeColor.WHITE, properties), BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_WALL_BANNER));
+    public static final DeferredHolder<Block, Block> PILLAGER_WARDING_WALL_BANNER = BLOCKS.registerBlock("pillager_warding_wall_banner", WardingBannerWallBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_WALL_BANNER));
 
-    public static final DeferredHolder<Item, BlockItem> PILLAGER_WARDING_BANNER_BLOCK_ITEM = ITEMS.registerItem("pillager_warding_banner", properties -> new BannerItem(PILLAGER_WARDING_BANNER.get(), PILLAGER_WARDING_WALL_BANNER.get(), properties.stacksTo(16).component(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY)));
+    public static final DeferredHolder<Item, PillagerWardingBannerItem> PILLAGER_WARDING_BANNER_BLOCK_ITEM = ITEMS.registerItem("pillager_warding_banner", properties -> new PillagerWardingBannerItem(PILLAGER_WARDING_BANNER.get(), PILLAGER_WARDING_WALL_BANNER.get(), properties));
 
     public static final DeferredHolder<PoiType, PoiType> PILLAGER_WARDING_BANNER_POI = POI_TYPES.register("pillager_warding_banner",
             () -> new PoiType(Set.of(PILLAGER_WARDING_BANNER.get().defaultBlockState()), 1, 1));
@@ -73,7 +73,6 @@ public class Registration {
                 .build();
 
         stack.set(DataComponents.BANNER_PATTERNS, bannerpatternlayers);
-        stack.set(DataComponents.HIDE_ADDITIONAL_TOOLTIP, Unit.INSTANCE);
 
         return stack;
     }

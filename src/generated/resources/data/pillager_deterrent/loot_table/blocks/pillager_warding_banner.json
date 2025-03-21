@@ -14,8 +14,7 @@
             {
               "function": "minecraft:copy_components",
               "include": [
-                "minecraft:banner_patterns",
-                "minecraft:hide_additional_tooltip"
+                "minecraft:banner_patterns"
               ],
               "source": "block_entity"
             }
