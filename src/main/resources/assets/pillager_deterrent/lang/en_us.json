@@ -4,5 +4,6 @@
   "block.pillager_deterrent.pillager_warding_banner": "Pillager Warding Banner",
   "lore.pillager_deterrent.ring": "Prevents Pillager Patrol Spawns",
   "lore.pillager_deterrent.banner": "Prevents Pillager Patrol Spawns Within %d Blocks",
-  "pillager_deterrent.configuration.banner_range": "Banner Range"
+  "pillager_deterrent.configuration.banner_range": "Banner Range",
+  "chat.pillager_deterrent.deterred": "Pillager Raiding Party Decided to Stay Away"
 }

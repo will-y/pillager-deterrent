@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import java.util.List;
 
 public class PillagerWardingBannerItem extends BannerItem {
-    private static final Style STYLE = Style.EMPTY.withColor(ChatFormatting.DARK_PURPLE).withItalic(true);
+    public static final Style STYLE = Style.EMPTY.withColor(ChatFormatting.DARK_PURPLE).withItalic(true);
 
     public PillagerWardingBannerItem(Block block, Block wallBlock, Properties properties) {
         super(block, wallBlock, properties.stacksTo(16)

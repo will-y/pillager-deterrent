@@ -24,10 +24,14 @@ public class DataGeneration {
         generator.addProvider(event.includeClient(), new PillagerDeterrentRecipes(packOutput, event.getLookupProvider()));
 
         generator.addProvider(event.includeClient(), new LootTableProvider(packOutput, Collections.emptySet(),
-                List.of(new LootTableProvider.SubProviderEntry(PillagerDeterrentLootTables::new, LootContextParamSets.BLOCK)), event.getLookupProvider()));
+                List.of(new LootTableProvider.SubProviderEntry(PillagerDeterrentBlockLootTables::new, LootContextParamSets.BLOCK),
+                        new LootTableProvider.SubProviderEntry(PillagerDeterrentChestLootTables::new, LootContextParamSets.CHEST)),
+                event.getLookupProvider()));
 
         PillagerDeterrentBlockTags blockTags = new PillagerDeterrentBlockTags(packOutput, event.getLookupProvider(), event.getExistingFileHelper());
         generator.addProvider(event.includeClient(), blockTags);
         generator.addProvider(event.includeClient(), new PillagerDeterrentItemTags(packOutput, event.getLookupProvider(), blockTags.contentsGetter(), event.getExistingFileHelper()));
+
+        generator.addProvider(event.includeClient(), new PillagerDeterrentGlobalLootModifiers(packOutput, event.getLookupProvider()));
     }
 }

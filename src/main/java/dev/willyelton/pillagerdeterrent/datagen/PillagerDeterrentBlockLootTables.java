@@ -20,8 +20,8 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class PillagerDeterrentLootTables extends VanillaBlockLoot {
-    public PillagerDeterrentLootTables(HolderLookup.Provider registries) {
+public class PillagerDeterrentBlockLootTables extends VanillaBlockLoot {
+    public PillagerDeterrentBlockLootTables(HolderLookup.Provider registries) {
         super(registries);
     }
 
