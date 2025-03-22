@@ -2,18 +2,10 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "b": {
-      "item": "minecraft:white_banner"
-    },
-    "g": {
-      "item": "minecraft:gray_dye"
-    },
-    "p": {
-      "item": "minecraft:ominous_bottle"
-    },
-    "r": {
-      "item": "minecraft:red_dye"
-    }
+    "b": "minecraft:white_banner",
+    "g": "minecraft:gray_dye",
+    "p": "minecraft:ominous_bottle",
+    "r": "minecraft:red_dye"
   },
   "pattern": [
     "rgr",

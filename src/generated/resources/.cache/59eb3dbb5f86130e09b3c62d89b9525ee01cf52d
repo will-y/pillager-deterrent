@@ -1,4 +1,4 @@
-// 1.21.1	2025-03-20T22:08:43.5979263	Loot Tables
+// 1.21.4	2025-03-22T14:20:06.5940246	Loot Tables
+6dc1121482ba2a0211b16015c4e435be8f7a2d18 data/minecraft/loot_table/blocks/white_banner.json
 d1bbc99e61191e37db7db6b55ff117624a4dbb30 data/pillager_deterrent/loot_table/blocks/pillager_warding_banner.json
-10e66d8a3ce3ed9e18c3ddc4ba3c8693749ad414 data/pillager_deterrent/loot_table/blocks/pillager_warding_wall_banner.json
 bb6592e0642eeaeab6788f5d6699d2c5b5fa8ce8 data/pillager_deterrent/loot_table/pillager_outpost.json

@@ -72,8 +72,8 @@ neoForge {
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         }
 
-        data {
-            data()
+        clientData {
+            clientData()
 
             // example of overriding the workingDirectory set in configureEach above, uncomment if you want to use it
             // gameDirectory = project.file('run-data')
@@ -122,11 +122,11 @@ configurations {
 
 dependencies {
     compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
-    runtimeOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}"
+//    runtimeOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 
-    compileOnly "mezz.jei:jei-1.21-common-api:${jei_version}"
-    compileOnly "mezz.jei:jei-1.21-neoforge-api:${jei_version}"
-    runtimeOnly "mezz.jei:jei-1.21-neoforge:${jei_version}"
+//    compileOnly "mezz.jei:jei-1.21-common-api:${jei_version}"
+//    compileOnly "mezz.jei:jei-1.21-neoforge-api:${jei_version}"
+//    runtimeOnly "mezz.jei:jei-1.21-neoforge:${jei_version}"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

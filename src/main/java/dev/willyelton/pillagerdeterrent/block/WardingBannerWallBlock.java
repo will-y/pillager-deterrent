@@ -15,13 +15,13 @@ public class WardingBannerWallBlock extends WallBannerBlock {
     }
 
     @Override
-    public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
+    public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData) {
         if (level.getBlockEntity(pos) instanceof BannerBlockEntity bannerblockentity) {
             ItemStack stack = new ItemStack(Registration.PILLAGER_WARDING_BANNER_BLOCK_ITEM);
             stack.applyComponents(bannerblockentity.collectComponents());
             return stack;
         } else {
-            return super.getCloneItemStack(level, pos, state);
+            return super.getCloneItemStack(level, pos, state, includeData);
         }
     }
 }
