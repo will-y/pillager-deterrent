@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.function.Predicate;
 
@@ -27,10 +27,10 @@ import static dev.willyelton.pillagerdeterrent.item.PillagerWardingBannerItem.ST
 public abstract class PatrolSpawnerMixin {
     @Inject(method = "tick", cancellable = true,
             at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerLevel;getCurrentDifficultyAt(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/DifficultyInstance;"))
-    public void tick(ServerLevel level, boolean spawnEnemies, boolean spawnFriendlies, CallbackInfoReturnable<Integer> cir, @Local Player player, @Local BlockPos.MutableBlockPos pos) {
-        if (!pillager_deterrent$findPillagerWard(player).isEmpty() || pillager_deterrent$findWardingBlock(level, pos)) {
+    public void tick(ServerLevel serverLevel, boolean spawnEnemies, boolean spawnFriendlies, CallbackInfo ci, @Local Player player, @Local BlockPos.MutableBlockPos pos) {
+        if (!pillager_deterrent$findPillagerWard(player).isEmpty() || pillager_deterrent$findWardingBlock(serverLevel, pos)) {
             player.displayClientMessage(Component.translatable("chat.pillager_deterrent.deterred").withStyle(STYLE), true);
-            cir.setReturnValue(0);
+            ci.cancel();
         }
     }
 

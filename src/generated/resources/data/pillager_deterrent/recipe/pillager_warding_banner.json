@@ -51,7 +51,12 @@
           "color": "red",
           "pattern": "minecraft:cross"
         }
-      ]
+      ],
+      "minecraft:tooltip_display": {
+        "hidden_components": [
+          "minecraft:banner_patterns"
+        ]
+      }
     },
     "count": 1,
     "id": "pillager_deterrent:pillager_warding_banner"

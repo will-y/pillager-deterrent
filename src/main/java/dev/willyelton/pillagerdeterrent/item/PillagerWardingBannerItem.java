@@ -8,10 +8,11 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.world.item.BannerItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BannerPatternLayers;
 
-import java.util.List;
+import java.util.function.Consumer;
 
 public class PillagerWardingBannerItem extends BannerItem {
     public static final Style STYLE = Style.EMPTY.withColor(ChatFormatting.DARK_PURPLE).withItalic(true);
@@ -22,7 +23,7 @@ public class PillagerWardingBannerItem extends BannerItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable("lore.pillager_deterrent.banner", Config.BANNER_RANGE.get()).withStyle(STYLE));
+    public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay tooltipDisplay, Consumer<Component> consumer, TooltipFlag tooltipFlag) {
+        consumer.accept(Component.translatable("lore.pillager_deterrent.banner", Config.BANNER_RANGE.get()).withStyle(STYLE));
     }
 }
