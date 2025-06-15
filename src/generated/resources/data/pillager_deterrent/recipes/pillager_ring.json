@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "p": {
+      "item": "minecraft:glass_bottle"
+    }
+  },
+  "pattern": [
+    " i ",
+    "ipi",
+    " i "
+  ],
+  "result": {
+    "item": "pillager_deterrent:pillager_ring"
+  },
+  "show_notification": true
+}

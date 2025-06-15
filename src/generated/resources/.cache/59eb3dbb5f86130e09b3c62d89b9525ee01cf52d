@@ -1,0 +1,4 @@
+// 1.20.1	2025-06-15T14:29:52.0795192	Loot Tables
+b38f1899a4b3089cf03405088a69aacf8f226ebb data/pillager_deterrent/loot_tables/blocks/pillager_warding_banner.json
+f051b33f785579036980918e8da1c0902a17ff27 data/pillager_deterrent/loot_tables/blocks/pillager_warding_wall_banner.json
+bb6592e0642eeaeab6788f5d6699d2c5b5fa8ce8 data/pillager_deterrent/loot_tables/pillager_outpost.json

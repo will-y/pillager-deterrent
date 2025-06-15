@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "b": {
+      "item": "minecraft:white_banner"
+    },
+    "g": {
+      "item": "minecraft:gray_dye"
+    },
+    "p": {
+      "item": "minecraft:glass_bottle"
+    },
+    "r": {
+      "item": "minecraft:red_dye"
+    }
+  },
+  "pattern": [
+    "rgr",
+    " b ",
+    "rpr"
+  ],
+  "result": {
+    "count": 1,
+    "id": "pillager_deterrent:pillager_warding_banner",
+    "nbt": {
+      "BlockEntityTag": {
+        "Patterns": [
+          {"Pattern": "mr", "Color": 9},
+          {"Pattern": "bs", "Color": 8},
+          {"Pattern": "cs", "Color": 7},
+          {"Pattern": "bo", "Color": 8},
+          {"Pattern": "ms", "Color": 15},
+          {"Pattern": "hh", "Color": 8},
+          {"Pattern": "mc", "Color": 8},
+          {"Pattern": "bo", "Color": 15},
+          {"Pattern": "cr", "Color": 14}
+        ]
+      }
+    }
+  }
+}
