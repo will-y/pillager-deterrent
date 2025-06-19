@@ -6,7 +6,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 
-@EventBusSubscriber(modid = PillagerDeterrent.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = PillagerDeterrent.MODID)
 public class BlockEntityTypeAddBlocksEvent {
     @SubscribeEvent
     public static void handle(net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent event) {

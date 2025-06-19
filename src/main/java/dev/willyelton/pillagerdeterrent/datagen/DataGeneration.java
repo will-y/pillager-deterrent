@@ -12,7 +12,7 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 import java.util.Collections;
 import java.util.List;
 
-@EventBusSubscriber(modid = PillagerDeterrent.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = PillagerDeterrent.MODID)
 public class DataGeneration {
     @SubscribeEvent
     public static void dataGen(GatherDataEvent.Client event) {
