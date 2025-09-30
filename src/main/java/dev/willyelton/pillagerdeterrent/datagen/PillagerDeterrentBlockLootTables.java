@@ -9,6 +9,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.loot.packs.VanillaBlockLoot;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -41,9 +42,9 @@ public class PillagerDeterrentBlockLootTables extends VanillaBlockLoot {
 
     private void createComponentSavingTable(Block block, ItemLike item, DataComponentType<?>... dataComponents) {
         LootPoolSingletonContainer.Builder<?> lti = LootItem.lootTableItem(item);
-        lti.apply(CopyNameFunction.copyName(CopyNameFunction.NameSource.BLOCK_ENTITY));
+        lti.apply(CopyNameFunction.copyName(new CopyNameFunction.Source(LootContext.BlockEntityTarget.BLOCK_ENTITY.getParam())));
 
-        CopyComponentsFunction.Builder copyComponentsFunctionBuilder = CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY);
+        CopyComponentsFunction.Builder copyComponentsFunctionBuilder = CopyComponentsFunction.copyComponentsFromBlockEntity(LootContext.BlockEntityTarget.BLOCK_ENTITY.getParam());
 
         for (DataComponentType<?> dataComponent : dataComponents) {
             copyComponentsFunctionBuilder.include(dataComponent);
