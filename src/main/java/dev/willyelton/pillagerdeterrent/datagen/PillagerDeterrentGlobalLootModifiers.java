@@ -21,7 +21,7 @@ public class PillagerDeterrentGlobalLootModifiers extends GlobalLootModifierProv
     @Override
     protected void start() {
         add("pillager_outpost",
-                new AddTableLootModifier(new LootItemCondition[]{LootTableIdCondition.builder(BuiltInLootTables.PILLAGER_OUTPOST.location()).build()},
+                new AddTableLootModifier(new LootItemCondition[]{LootTableIdCondition.builder(BuiltInLootTables.PILLAGER_OUTPOST.identifier()).build()},
                         RESOURCE_KEY));
     }
 }

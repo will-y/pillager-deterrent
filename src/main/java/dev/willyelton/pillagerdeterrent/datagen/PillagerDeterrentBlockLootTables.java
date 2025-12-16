@@ -35,16 +35,16 @@ public class PillagerDeterrentBlockLootTables extends VanillaBlockLoot {
     @Override
     protected Iterable<Block> getKnownBlocks() {
         return BuiltInRegistries.BLOCK.entrySet().stream()
-                .filter(e -> e.getKey().location().getNamespace().equals(PillagerDeterrent.MODID))
+                .filter(e -> e.getKey().identifier().getNamespace().equals(PillagerDeterrent.MODID))
                 .map(Map.Entry::getValue)
                 .collect(Collectors.toList());
     }
 
     private void createComponentSavingTable(Block block, ItemLike item, DataComponentType<?>... dataComponents) {
         LootPoolSingletonContainer.Builder<?> lti = LootItem.lootTableItem(item);
-        lti.apply(CopyNameFunction.copyName(new CopyNameFunction.Source(LootContext.BlockEntityTarget.BLOCK_ENTITY.getParam())));
+        lti.apply(CopyNameFunction.copyName(LootContext.BlockEntityTarget.BLOCK_ENTITY));
 
-        CopyComponentsFunction.Builder copyComponentsFunctionBuilder = CopyComponentsFunction.copyComponentsFromBlockEntity(LootContext.BlockEntityTarget.BLOCK_ENTITY.getParam());
+        CopyComponentsFunction.Builder copyComponentsFunctionBuilder = CopyComponentsFunction.copyComponentsFromBlockEntity(LootContext.BlockEntityTarget.BLOCK_ENTITY.contextParam());
 
         for (DataComponentType<?> dataComponent : dataComponents) {
             copyComponentsFunctionBuilder.include(dataComponent);
