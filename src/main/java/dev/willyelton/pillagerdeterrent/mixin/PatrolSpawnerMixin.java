@@ -29,7 +29,7 @@ public abstract class PatrolSpawnerMixin {
             at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerLevel;getCurrentDifficultyAt(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/DifficultyInstance;"))
     public void tick(ServerLevel serverLevel, boolean spawnEnemies, CallbackInfo ci, @Local Player player, @Local BlockPos.MutableBlockPos pos) {
         if (!pillager_deterrent$findPillagerWard(player).isEmpty() || pillager_deterrent$findWardingBlock(serverLevel, pos)) {
-            player.displayClientMessage(Component.translatable("chat.pillager_deterrent.deterred").withStyle(STYLE), true);
+            player.sendOverlayMessage(Component.translatable("chat.pillager_deterrent.deterred").withStyle(STYLE));
             ci.cancel();
         }
     }

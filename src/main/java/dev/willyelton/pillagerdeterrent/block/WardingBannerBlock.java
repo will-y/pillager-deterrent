@@ -6,14 +6,12 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BannerBlock;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BannerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class WardingBannerBlock extends BannerBlock {
     public WardingBannerBlock(Properties properties) {
         super(DyeColor.WHITE, properties);
-        BY_COLOR.put(DyeColor.WHITE, Blocks.WHITE_BANNER);
     }
 
     @Override

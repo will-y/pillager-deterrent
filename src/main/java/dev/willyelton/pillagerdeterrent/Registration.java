@@ -6,6 +6,7 @@ import dev.willyelton.pillagerdeterrent.block.WardingBannerBlock;
 import dev.willyelton.pillagerdeterrent.block.WardingBannerWallBlock;
 import dev.willyelton.pillagerdeterrent.item.PillagerWardingBannerItem;
 import net.minecraft.core.HolderGetter;
+import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -15,6 +16,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.block.Block;
@@ -38,12 +40,12 @@ public class Registration {
     public static final DeferredRegister<PoiType> POI_TYPES = DeferredRegister.create(Registries.POINT_OF_INTEREST_TYPE, PillagerDeterrent.MODID);
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, PillagerDeterrent.MODID);
 
-    public static final DeferredHolder<Item, Item> PILLAGER_RING = ITEMS.registerSimpleItem("pillager_ring", new Item.Properties().stacksTo(1).component(DataComponents.LORE, new ItemLore(List.of(Component.translatable("lore.pillager_deterrent.ring", "test")))));
+    public static final DeferredHolder<Item, Item> PILLAGER_RING = ITEMS.registerSimpleItem("pillager_ring", () -> new Item.Properties().stacksTo(1).component(DataComponents.LORE, new ItemLore(List.of(Component.translatable("lore.pillager_deterrent.ring", "test")))));
 
-    public static final DeferredHolder<Block, Block> PILLAGER_WARDING_BANNER = BLOCKS.registerBlock("pillager_warding_banner", WardingBannerBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_BANNER));
-    public static final DeferredHolder<Block, Block> PILLAGER_WARDING_WALL_BANNER = BLOCKS.registerBlock("pillager_warding_wall_banner", WardingBannerWallBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_WALL_BANNER).overrideLootTable(Optional.of(ResourceKey.create(Registries.LOOT_TABLE, PillagerDeterrent.rl("blocks/" + PILLAGER_WARDING_BANNER.getId().getPath())))));
+    public static final DeferredHolder<Block, Block> PILLAGER_WARDING_BANNER = BLOCKS.registerBlock("pillager_warding_banner", WardingBannerBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_BANNER));
+    public static final DeferredHolder<Block, Block> PILLAGER_WARDING_WALL_BANNER = BLOCKS.registerBlock("pillager_warding_wall_banner", WardingBannerWallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_WALL_BANNER).overrideLootTable(Optional.of(ResourceKey.create(Registries.LOOT_TABLE, PillagerDeterrent.rl("blocks/" + PILLAGER_WARDING_BANNER.getId().getPath())))));
 
-    public static final DeferredHolder<Item, PillagerWardingBannerItem> PILLAGER_WARDING_BANNER_BLOCK_ITEM = ITEMS.registerItem("pillager_warding_banner", properties -> new PillagerWardingBannerItem(PILLAGER_WARDING_BANNER.get(), PILLAGER_WARDING_WALL_BANNER.get(), properties), new Item.Properties().useBlockDescriptionPrefix());
+    public static final DeferredHolder<Item, PillagerWardingBannerItem> PILLAGER_WARDING_BANNER_BLOCK_ITEM = ITEMS.registerItem("pillager_warding_banner", properties -> new PillagerWardingBannerItem(PILLAGER_WARDING_BANNER.get(), PILLAGER_WARDING_WALL_BANNER.get(), properties), () -> new Item.Properties().useBlockDescriptionPrefix());
 
     public static final DeferredHolder<PoiType, PoiType> PILLAGER_WARDING_BANNER_POI = POI_TYPES.register("pillager_warding_banner",
             () -> new PoiType(getPOIBlockStates(), 0, 1));
@@ -54,7 +56,7 @@ public class Registration {
                     .icon(() -> new ItemStack(PILLAGER_RING.get()))
                     .displayItems((flags, output) -> {
                         output.accept(PILLAGER_RING.get());
-                        output.accept(getBannerStack(flags.holders().lookupOrThrow(Registries.BANNER_PATTERN)));
+                        output.accept(getBannerStack(flags.holders().lookupOrThrow(Registries.BANNER_PATTERN)).create());
                     }).build());
 
     public static void init(IEventBus modEventBus) {
@@ -64,8 +66,7 @@ public class Registration {
         TABS.register(modEventBus);
     }
 
-    public static ItemStack getBannerStack(HolderGetter<BannerPattern> patternRegistry) {
-        ItemStack stack = new ItemStack(PILLAGER_WARDING_BANNER_BLOCK_ITEM);
+    public static ItemStackTemplate getBannerStack(HolderGetter<BannerPattern> patternRegistry) {
         BannerPatternLayers bannerpatternlayers = new BannerPatternLayers.Builder()
                 .addIfRegistered(patternRegistry, BannerPatterns.RHOMBUS_MIDDLE, DyeColor.CYAN)
                 .addIfRegistered(patternRegistry, BannerPatterns.STRIPE_BOTTOM, DyeColor.LIGHT_GRAY)
@@ -78,10 +79,12 @@ public class Registration {
                 .addIfRegistered(patternRegistry, BannerPatterns.CROSS, DyeColor.RED)
                 .build();
 
-        stack.set(DataComponents.BANNER_PATTERNS, bannerpatternlayers);
-        stack.set(DataComponents.TOOLTIP_DISPLAY, TooltipDisplay.DEFAULT.withHidden(DataComponents.BANNER_PATTERNS, true));
+        var patch = DataComponentPatch.builder()
+                .set(DataComponents.BANNER_PATTERNS, bannerpatternlayers)
+                .set(DataComponents.TOOLTIP_DISPLAY, TooltipDisplay.DEFAULT.withHidden(DataComponents.BANNER_PATTERNS, true))
+                .build();
 
-        return stack;
+        return new ItemStackTemplate(PILLAGER_WARDING_BANNER_BLOCK_ITEM, 1, patch);
     }
 
     private static Set<BlockState> getPOIBlockStates() {

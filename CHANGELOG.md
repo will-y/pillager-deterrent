@@ -1,4 +1,4 @@
-# Pillager Deterrent 1.21.11 Changelog
+# Pillager Deterrent 21.6 Changelog
 
-## 1.0.0
-- Updates to 1.21.11
+## 21.6.1.0
+- Updates to 21.6
