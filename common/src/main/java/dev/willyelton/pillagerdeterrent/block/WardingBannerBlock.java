@@ -1,6 +1,6 @@
 package dev.willyelton.pillagerdeterrent.block;
 
-import dev.willyelton.pillagerdeterrent.Registration;
+import dev.willyelton.pillagerdeterrent.platform.Services;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
@@ -17,7 +17,7 @@ public class WardingBannerBlock extends BannerBlock {
     @Override
     public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData) {
         if (level.getBlockEntity(pos) instanceof BannerBlockEntity bannerblockentity) {
-            ItemStack stack = new ItemStack(Registration.PILLAGER_WARDING_BANNER_BLOCK_ITEM);
+            ItemStack stack = new ItemStack(Services.PLATFORM.getBannerBlockItem());
             stack.applyComponents(bannerblockentity.collectComponents());
             return stack;
         } else {

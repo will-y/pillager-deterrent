@@ -1,5 +1,6 @@
 package dev.willyelton.pillagerdeterrent.datagen;
 
+import dev.willyelton.pillagerdeterrent.Constants;
 import dev.willyelton.pillagerdeterrent.PillagerDeterrent;
 import dev.willyelton.pillagerdeterrent.Registration;
 import net.minecraft.client.data.models.BlockModelGenerators;
@@ -11,7 +12,7 @@ import net.minecraft.world.item.DyeColor;
 
 public class PillagerDeterrentModels extends ModelProvider {
     public PillagerDeterrentModels(PackOutput output) {
-        super(output, PillagerDeterrent.MODID);
+        super(output, Constants.MODID);
     }
 
     @Override

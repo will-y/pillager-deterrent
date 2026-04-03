@@ -1,5 +1,6 @@
 package dev.willyelton.pillagerdeterrent.datagen;
 
+import dev.willyelton.pillagerdeterrent.Constants;
 import dev.willyelton.pillagerdeterrent.PillagerDeterrent;
 import dev.willyelton.pillagerdeterrent.Registration;
 import dev.willyelton.pillagerdeterrent.tag.PillagerDeterrentTags;
@@ -14,7 +15,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class PillagerDeterrentItemTags extends TagsProvider<Item> {
     public PillagerDeterrentItemTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTags) {
-        super(output, Registries.ITEM, lookupProvider, PillagerDeterrent.MODID);
+        super(output, Registries.ITEM, lookupProvider, Constants.MODID);
     }
 
     @Override

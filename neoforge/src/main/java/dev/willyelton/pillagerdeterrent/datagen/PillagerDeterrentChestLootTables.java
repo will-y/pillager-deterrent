@@ -14,8 +14,10 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 
 import java.util.function.BiConsumer;
 
+import static dev.willyelton.pillagerdeterrent.Constants.rl;
+
 public class PillagerDeterrentChestLootTables implements LootTableSubProvider {
-    public static ResourceKey<LootTable> RESOURCE_KEY = ResourceKey.create(Registries.LOOT_TABLE, PillagerDeterrent.rl("pillager_outpost"));
+    public static ResourceKey<LootTable> RESOURCE_KEY = ResourceKey.create(Registries.LOOT_TABLE, rl("pillager_outpost"));
 
     public PillagerDeterrentChestLootTables(HolderLookup.Provider lookupProvider) {
 

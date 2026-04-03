@@ -1,5 +1,6 @@
 package dev.willyelton.pillagerdeterrent.datagen;
 
+import dev.willyelton.pillagerdeterrent.Constants;
 import dev.willyelton.pillagerdeterrent.PillagerDeterrent;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -12,7 +13,7 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 import java.util.Collections;
 import java.util.List;
 
-@EventBusSubscriber(modid = PillagerDeterrent.MODID)
+@EventBusSubscriber(modid = Constants.MODID)
 public class DataGeneration {
     @SubscribeEvent
     public static void dataGen(GatherDataEvent.Client event) {

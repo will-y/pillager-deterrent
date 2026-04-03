@@ -1,9 +1,0 @@
-{
-  "required": true,
-  "package": "dev.willyelton.pillagerdeterrent.mixin",
-  "compatibilityLevel": "JAVA_25",
-  "mixins": [
-    "PatrolSpawnerMixin"
-  ],
-  "minVersion": "0.8"
-}

@@ -1,22 +1,12 @@
 package dev.willyelton.pillagerdeterrent;
 
-import com.mojang.logging.LogUtils;
-import net.minecraft.resources.Identifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import org.slf4j.Logger;
 
-@Mod(PillagerDeterrent.MODID)
+@Mod(Constants.MODID)
 public class PillagerDeterrent {
-    public static final String MODID = "pillager_deterrent";
-    public static final Logger LOGGER = LogUtils.getLogger();
-
-    public static Identifier rl(String path) {
-        return Identifier.fromNamespaceAndPath(MODID, path);
-    }
-
     public PillagerDeterrent(IEventBus modEventBus, ModContainer container) {
         Registration.init(modEventBus);
 

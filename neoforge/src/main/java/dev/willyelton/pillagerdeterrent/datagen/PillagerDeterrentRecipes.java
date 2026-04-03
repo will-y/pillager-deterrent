@@ -1,5 +1,6 @@
 package dev.willyelton.pillagerdeterrent.datagen;
 
+import dev.willyelton.pillagerdeterrent.Constants;
 import dev.willyelton.pillagerdeterrent.PillagerDeterrent;
 import dev.willyelton.pillagerdeterrent.Registration;
 import net.minecraft.core.HolderLookup;
@@ -53,7 +54,7 @@ public class PillagerDeterrentRecipes extends RecipeProvider {
 
         @Override
         public String getName() {
-            return PillagerDeterrent.MODID + ":recipes";
+            return Constants.MODID + ":recipes";
         }
     }
 }

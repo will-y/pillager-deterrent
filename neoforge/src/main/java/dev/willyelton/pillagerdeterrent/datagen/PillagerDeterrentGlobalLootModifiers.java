@@ -1,5 +1,6 @@
 package dev.willyelton.pillagerdeterrent.datagen;
 
+import dev.willyelton.pillagerdeterrent.Constants;
 import dev.willyelton.pillagerdeterrent.PillagerDeterrent;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -15,7 +16,7 @@ import static dev.willyelton.pillagerdeterrent.datagen.PillagerDeterrentChestLoo
 
 public class PillagerDeterrentGlobalLootModifiers extends GlobalLootModifierProvider {
     public PillagerDeterrentGlobalLootModifiers(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, registries, PillagerDeterrent.MODID);
+        super(output, registries, Constants.MODID);
     }
 
     @Override

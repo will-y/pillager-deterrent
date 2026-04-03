@@ -1,5 +1,6 @@
 package dev.willyelton.pillagerdeterrent.datagen;
 
+import dev.willyelton.pillagerdeterrent.Constants;
 import dev.willyelton.pillagerdeterrent.PillagerDeterrent;
 import dev.willyelton.pillagerdeterrent.Registration;
 import net.minecraft.core.HolderLookup;
@@ -35,7 +36,7 @@ public class PillagerDeterrentBlockLootTables extends VanillaBlockLoot {
     @Override
     protected Iterable<Block> getKnownBlocks() {
         return BuiltInRegistries.BLOCK.entrySet().stream()
-                .filter(e -> e.getKey().identifier().getNamespace().equals(PillagerDeterrent.MODID))
+                .filter(e -> e.getKey().identifier().getNamespace().equals(Constants.MODID))
                 .map(Map.Entry::getValue)
                 .collect(Collectors.toList());
     }

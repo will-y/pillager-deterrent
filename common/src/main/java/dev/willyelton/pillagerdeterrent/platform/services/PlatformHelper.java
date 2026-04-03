@@ -1,6 +1,10 @@
-package com.example.examplemod.platform.services;
+package dev.willyelton.pillagerdeterrent.platform.services;
 
-public interface IPlatformHelper {
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.ItemLike;
+
+// Credit: https://github.com/jaredlll08/MultiLoader-Template/blob/26.1.1/common/src/main/java/com/example/examplemod/platform/services/IPlatformHelper.java
+public interface PlatformHelper {
 
     /**
      * Gets the name of the current platform
@@ -33,4 +37,8 @@ public interface IPlatformHelper {
 
         return isDevelopmentEnvironment() ? "development" : "production";
     }
+
+    Item getBannerBlockItem();
+
+    int bannerRange();
 }
