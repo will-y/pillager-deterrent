@@ -34,6 +34,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import static dev.willyelton.pillagerdeterrent.Constants.PILLAGER_DETERRENT_POI_KEY;
 import static dev.willyelton.pillagerdeterrent.Constants.rl;
 
 public class Registration {
@@ -49,7 +50,7 @@ public class Registration {
 
     public static final DeferredHolder<Item, PillagerWardingBannerItem> PILLAGER_WARDING_BANNER_BLOCK_ITEM = ITEMS.registerItem("pillager_warding_banner", properties -> new PillagerWardingBannerItem(PILLAGER_WARDING_BANNER.get(), PILLAGER_WARDING_WALL_BANNER.get(), properties), () -> new Item.Properties().useBlockDescriptionPrefix());
 
-    public static final DeferredHolder<PoiType, PoiType> PILLAGER_WARDING_BANNER_POI = POI_TYPES.register("pillager_warding_banner",
+    public static final DeferredHolder<PoiType, PoiType> PILLAGER_WARDING_BANNER_POI = POI_TYPES.register(PILLAGER_DETERRENT_POI_KEY.identifier().getPath(),
             () -> new PoiType(getPOIBlockStates(), 0, 1));
 
     public static DeferredHolder<CreativeModeTab, CreativeModeTab> TAB = TABS.register("pillager_deterrent_tab", () ->

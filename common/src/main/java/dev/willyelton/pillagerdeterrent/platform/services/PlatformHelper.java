@@ -37,8 +37,4 @@ public interface PlatformHelper {
 
         return isDevelopmentEnvironment() ? "development" : "production";
     }
-
-    Item getBannerBlockItem();
-
-    int bannerRange();
 }

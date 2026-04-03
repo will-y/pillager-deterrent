@@ -17,7 +17,7 @@ public class WardingBannerWallBlock extends WallBannerBlock {
     @Override
     public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData) {
         if (level.getBlockEntity(pos) instanceof BannerBlockEntity bannerblockentity) {
-            ItemStack stack = new ItemStack(Services.PLATFORM.getBannerBlockItem());
+            ItemStack stack = new ItemStack(Services.REGISTRATION.getBannerBlockItem());
             stack.applyComponents(bannerblockentity.collectComponents());
             return stack;
         } else {

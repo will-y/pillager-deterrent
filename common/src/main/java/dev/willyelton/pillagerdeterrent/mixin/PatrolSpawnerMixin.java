@@ -20,6 +20,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.function.Predicate;
 
+import static dev.willyelton.pillagerdeterrent.Constants.PILLAGER_DETERRENT_POI_KEY;
+
 @Mixin(PatrolSpawner.class)
 public abstract class PatrolSpawnerMixin {
     @Inject(method = "tick", cancellable = true,
@@ -34,13 +36,13 @@ public abstract class PatrolSpawnerMixin {
     @Unique
     private static ItemStack pillager_deterrent$findPillagerWard(Player player) {
         Predicate<ItemStack> wardPredicate = stack -> stack.is(PillagerDeterrentTags.PILLAGER_WARD);
-        return CuriosCompatability.getCuriosItems(player, wardPredicate)
+        return Services.CURIOS_COMPATIBILITY.getCuriosItems(player, wardPredicate)
                 .orElse(InventoryUtils.findItem(player.getInventory(), stack -> stack.is(PillagerDeterrentTags.PILLAGER_WARD)));
     }
 
     @Unique
     private static boolean pillager_deterrent$findWardingBlock(ServerLevel level, BlockPos spawnPosition) {
-        return level.getPoiManager().findClosest(poiTypeHolder -> poiTypeHolder.is(Registration.PILLAGER_WARDING_BANNER_POI.getKey()),
-                spawnPosition, Services.PLATFORM.bannerRange(), PoiManager.Occupancy.ANY).isPresent();
+        return level.getPoiManager().findClosest(poiTypeHolder -> poiTypeHolder.is(PILLAGER_DETERRENT_POI_KEY),
+                spawnPosition, Services.REGISTRATION.bannerRange(), PoiManager.Occupancy.ANY).isPresent();
     }
 }

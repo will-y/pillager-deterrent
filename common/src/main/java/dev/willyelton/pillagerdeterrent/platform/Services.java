@@ -1,6 +1,8 @@
 package dev.willyelton.pillagerdeterrent.platform;
 
+import dev.willyelton.pillagerdeterrent.platform.services.CuriosCompatability;
 import dev.willyelton.pillagerdeterrent.platform.services.PlatformHelper;
+import dev.willyelton.pillagerdeterrent.platform.services.RegistrationHelper;
 
 import java.util.ServiceLoader;
 
@@ -11,6 +13,8 @@ public class Services {
     // For example this can be used to check if the code is running on NeoForge vs Fabric, or to ask the modloader if another
     // mod is loaded.
     public static final PlatformHelper PLATFORM = load(PlatformHelper.class);
+    public static final RegistrationHelper REGISTRATION = load(RegistrationHelper.class);
+    public static final CuriosCompatability CURIOS_COMPATIBILITY = load(CuriosCompatability.class);
 
     // This code is used to load a service for the current environment. Your implementation of the service must be defined
     // manually by including a text file in META-INF/services named with the fully qualified class name of the service.
