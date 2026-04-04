@@ -14,6 +14,8 @@ import net.minecraft.world.item.Items;
 
 import java.util.concurrent.CompletableFuture;
 
+import static dev.willyelton.pillagerdeterrent.Constants.getBannerStack;
+
 public class PillagerDeterrentRecipes extends RecipeProvider {
     public PillagerDeterrentRecipes(HolderLookup.Provider registries, RecipeOutput output) {
         super(registries, output);
@@ -21,7 +23,7 @@ public class PillagerDeterrentRecipes extends RecipeProvider {
 
     @Override
     protected void buildRecipes() {
-        ShapedRecipeBuilder.shaped(registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, Registration.getBannerStack(registries.lookupOrThrow(Registries.BANNER_PATTERN)))
+        ShapedRecipeBuilder.shaped(registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, getBannerStack(registries.lookupOrThrow(Registries.BANNER_PATTERN)))
                 .pattern("rgr")
                 .pattern(" b ")
                 .pattern("rpr")
