@@ -1,0 +1,63 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "b": "minecraft:white_banner",
+    "g": "minecraft:gray_dye",
+    "p": "minecraft:ominous_bottle",
+    "r": "minecraft:red_dye"
+  },
+  "pattern": [
+    "rgr",
+    " b ",
+    "rpr"
+  ],
+  "result": {
+    "components": {
+      "minecraft:banner_patterns": [
+        {
+          "color": "cyan",
+          "pattern": "minecraft:rhombus"
+        },
+        {
+          "color": "light_gray",
+          "pattern": "minecraft:stripe_bottom"
+        },
+        {
+          "color": "gray",
+          "pattern": "minecraft:stripe_center"
+        },
+        {
+          "color": "light_gray",
+          "pattern": "minecraft:border"
+        },
+        {
+          "color": "black",
+          "pattern": "minecraft:stripe_middle"
+        },
+        {
+          "color": "light_gray",
+          "pattern": "minecraft:half_horizontal"
+        },
+        {
+          "color": "light_gray",
+          "pattern": "minecraft:circle"
+        },
+        {
+          "color": "black",
+          "pattern": "minecraft:border"
+        },
+        {
+          "color": "red",
+          "pattern": "minecraft:cross"
+        }
+      ],
+      "minecraft:tooltip_display": {
+        "hidden_components": [
+          "minecraft:banner_patterns"
+        ]
+      }
+    },
+    "id": "pillager_deterrent:pillager_warding_banner"
+  }
+}

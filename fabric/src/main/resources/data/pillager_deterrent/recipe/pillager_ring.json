@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "i": "minecraft:iron_ingot",
+    "p": "minecraft:ominous_bottle"
+  },
+  "pattern": [
+    " i ",
+    "ipi",
+    " i "
+  ],
+  "result": {
+    "id": "pillager_deterrent:pillager_ring"
+  }
+}

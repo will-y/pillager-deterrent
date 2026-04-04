@@ -35,6 +35,7 @@ import java.util.Optional;
 import java.util.Set;
 
 import static dev.willyelton.pillagerdeterrent.Constants.PILLAGER_DETERRENT_POI_KEY;
+import static dev.willyelton.pillagerdeterrent.Constants.getBannerStack;
 import static dev.willyelton.pillagerdeterrent.Constants.rl;
 
 public class Registration {
@@ -67,27 +68,6 @@ public class Registration {
         BLOCKS.register(modEventBus);
         POI_TYPES.register(modEventBus);
         TABS.register(modEventBus);
-    }
-
-    public static ItemStackTemplate getBannerStack(HolderGetter<BannerPattern> patternRegistry) {
-        BannerPatternLayers bannerpatternlayers = new BannerPatternLayers.Builder()
-                .addIfRegistered(patternRegistry, BannerPatterns.RHOMBUS_MIDDLE, DyeColor.CYAN)
-                .addIfRegistered(patternRegistry, BannerPatterns.STRIPE_BOTTOM, DyeColor.LIGHT_GRAY)
-                .addIfRegistered(patternRegistry, BannerPatterns.STRIPE_CENTER, DyeColor.GRAY)
-                .addIfRegistered(patternRegistry, BannerPatterns.BORDER, DyeColor.LIGHT_GRAY)
-                .addIfRegistered(patternRegistry, BannerPatterns.STRIPE_MIDDLE, DyeColor.BLACK)
-                .addIfRegistered(patternRegistry, BannerPatterns.HALF_HORIZONTAL, DyeColor.LIGHT_GRAY)
-                .addIfRegistered(patternRegistry, BannerPatterns.CIRCLE_MIDDLE, DyeColor.LIGHT_GRAY)
-                .addIfRegistered(patternRegistry, BannerPatterns.BORDER, DyeColor.BLACK)
-                .addIfRegistered(patternRegistry, BannerPatterns.CROSS, DyeColor.RED)
-                .build();
-
-        var patch = DataComponentPatch.builder()
-                .set(DataComponents.BANNER_PATTERNS, bannerpatternlayers)
-                .set(DataComponents.TOOLTIP_DISPLAY, TooltipDisplay.DEFAULT.withHidden(DataComponents.BANNER_PATTERNS, true))
-                .build();
-
-        return new ItemStackTemplate(PILLAGER_WARDING_BANNER_BLOCK_ITEM, 1, patch);
     }
 
     private static Set<BlockState> getPOIBlockStates() {

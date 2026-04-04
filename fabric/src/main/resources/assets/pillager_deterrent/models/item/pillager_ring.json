@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "pillager_deterrent:item/pillager_ring"
+  }
+}

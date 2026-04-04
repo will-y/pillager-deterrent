@@ -1,9 +1,10 @@
-package com.example.examplemod.platform;
+package dev.willyelton.pillagerdeterrent.platform;
 
-import com.example.examplemod.platform.services.IPlatformHelper;
+import dev.willyelton.pillagerdeterrent.platform.services.PlatformHelper;
 import net.fabricmc.loader.api.FabricLoader;
 
-public class FabricPlatformHelper implements IPlatformHelper {
+// Credit: https://github.com/jaredlll08/MultiLoader-Template/blob/26.1.1/fabric/src/main/java/com/example/examplemod/platform/FabricPlatformHelper.java
+public class FabricPlatformHelper implements PlatformHelper {
 
     @Override
     public String getPlatformName() {
@@ -12,13 +13,11 @@ public class FabricPlatformHelper implements IPlatformHelper {
 
     @Override
     public boolean isModLoaded(String modId) {
-
         return FabricLoader.getInstance().isModLoaded(modId);
     }
 
     @Override
     public boolean isDevelopmentEnvironment() {
-
         return FabricLoader.getInstance().isDevelopmentEnvironment();
     }
 }
