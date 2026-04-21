@@ -8,6 +8,7 @@ import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.neoforged.neoforge.common.data.GlobalLootModifierProvider;
 import net.neoforged.neoforge.common.loot.AddTableLootModifier;
+import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.common.loot.LootTableIdCondition;
 
 import java.util.concurrent.CompletableFuture;
@@ -23,6 +24,6 @@ public class PillagerDeterrentGlobalLootModifiers extends GlobalLootModifierProv
     protected void start() {
         add("pillager_outpost",
                 new AddTableLootModifier(new LootItemCondition[]{LootTableIdCondition.builder(BuiltInLootTables.PILLAGER_OUTPOST.identifier()).build()},
-                        RESOURCE_KEY));
+                        IGlobalLootModifier.DEFAULT_PRIORITY, RESOURCE_KEY));
     }
 }
