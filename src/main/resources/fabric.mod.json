@@ -1,0 +1,31 @@
+{
+	"schemaVersion": 1,
+	"id": "pillager_deterrent",
+	"version": "${version}",
+	"name": "Pillager Deterrent",
+	"description": "This mod adds 2 ways to prevent pillager patrols from spawning, a wearable ring and a banner.",
+	"authors": [
+		"Eyeroh"
+	],
+	"contact": {
+		"homepage": "https://www.curseforge.com/minecraft/mc-mods/pillager-deterrent",
+		"sources": "https://github.com/will-y/pillager-deterrent"
+	},
+	"license": "MIT",
+	"icon": "assets/pillager_deterrent/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"dev.willyelton.pillagerdeterrent.PillagerDeterrent"
+		]
+	},
+	"mixins": [
+		"pillager_deterrent.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.2",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	}
+}
