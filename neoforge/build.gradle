@@ -42,7 +42,7 @@ neoForge {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
-    compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
+//    compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
 }
 
 // Implement mcgradleconventions loader attribute

@@ -1,5 +1,5 @@
-// 26.1.2	2026-04-20T20:23:58.7956968	pillager_deterrent:recipes
+// 26.2	2026-06-16T12:42:50.125380358	pillager_deterrent:recipes
 dbe9ff8bcf42c7bbfe13de8dab262691674c4da7 data/pillager_deterrent/advancement/recipes/misc/pillager_ring.json
 71bb2740a73b1e382b490fec3e517f2f76995312 data/pillager_deterrent/advancement/recipes/misc/pillager_warding_banner.json
-d6901b5a063418191adcde9f2d574ceb4a70fb1b data/pillager_deterrent/recipe/pillager_ring.json
-ee582d32d8250f79bebe90a8e525a3a93b44fa28 data/pillager_deterrent/recipe/pillager_warding_banner.json
+aeac81b300036ff52558b372430df3a493a4ef9b data/pillager_deterrent/recipe/pillager_ring.json
+8026b31bcbb690b567dc8c8ad1c24dd452c30b39 data/pillager_deterrent/recipe/pillager_warding_banner.json

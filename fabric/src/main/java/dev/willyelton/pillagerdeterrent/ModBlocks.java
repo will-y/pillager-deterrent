@@ -17,8 +17,8 @@ import java.util.function.Function;
 import static dev.willyelton.pillagerdeterrent.Constants.rl;
 
 public class ModBlocks {
-    public static final Block PILLAGER_WARDING_BANNER = register("pillager_warding_banner", WardingBannerBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_BANNER));
-    public static final Block PILLAGER_WARDING_WALL_BANNER = register("pillager_warding_wall_banner", WardingBannerWallBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_WALL_BANNER).overrideLootTable(Optional.of(ResourceKey.create(Registries.LOOT_TABLE, rl("blocks/pillager_warding_banner")))));
+    public static final Block PILLAGER_WARDING_BANNER = register("pillager_warding_banner", WardingBannerBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BANNER.white()));
+    public static final Block PILLAGER_WARDING_WALL_BANNER = register("pillager_warding_wall_banner", WardingBannerWallBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.WALL_BANNER.white()).overrideLootTable(Optional.of(ResourceKey.create(Registries.LOOT_TABLE, rl("blocks/pillager_warding_banner")))));
 
     private static Block register(String name, Function<BlockBehaviour.Properties, Block> blockFactory, BlockBehaviour.Properties settings) {
         ResourceKey<Block> blockKey = keyOfBlock(name);

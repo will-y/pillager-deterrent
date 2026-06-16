@@ -46,8 +46,8 @@ public class Registration {
 
     public static final DeferredHolder<Item, Item> PILLAGER_RING = ITEMS.registerSimpleItem("pillager_ring", () -> new Item.Properties().stacksTo(1).component(DataComponents.LORE, new ItemLore(List.of(Component.translatable("lore.pillager_deterrent.ring", "test")))));
 
-    public static final DeferredHolder<Block, Block> PILLAGER_WARDING_BANNER = BLOCKS.registerBlock("pillager_warding_banner", WardingBannerBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_BANNER));
-    public static final DeferredHolder<Block, Block> PILLAGER_WARDING_WALL_BANNER = BLOCKS.registerBlock("pillager_warding_wall_banner", WardingBannerWallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_WALL_BANNER).overrideLootTable(Optional.of(ResourceKey.create(Registries.LOOT_TABLE, rl("blocks/" + PILLAGER_WARDING_BANNER.getId().getPath())))));
+    public static final DeferredHolder<Block, Block> PILLAGER_WARDING_BANNER = BLOCKS.registerBlock("pillager_warding_banner", WardingBannerBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.BANNER.white()));
+    public static final DeferredHolder<Block, Block> PILLAGER_WARDING_WALL_BANNER = BLOCKS.registerBlock("pillager_warding_wall_banner", WardingBannerWallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.WALL_BANNER.white()).overrideLootTable(Optional.of(ResourceKey.create(Registries.LOOT_TABLE, rl("blocks/" + PILLAGER_WARDING_BANNER.getId().getPath())))));
 
     public static final DeferredHolder<Item, PillagerWardingBannerItem> PILLAGER_WARDING_BANNER_BLOCK_ITEM = ITEMS.registerItem("pillager_warding_banner", properties -> new PillagerWardingBannerItem(PILLAGER_WARDING_BANNER.get(), PILLAGER_WARDING_WALL_BANNER.get(), properties), () -> new Item.Properties().useBlockDescriptionPrefix());
 

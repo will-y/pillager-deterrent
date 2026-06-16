@@ -27,9 +27,9 @@ public class PillagerDeterrentRecipes extends RecipeProvider {
                 .pattern("rgr")
                 .pattern(" b ")
                 .pattern("rpr")
-                .define('r', Items.RED_DYE)
-                .define('g', Items.GRAY_DYE)
-                .define('b', Items.WHITE_BANNER)
+                .define('r', Items.DYE.red())
+                .define('g', Items.DYE.gray())
+                .define('b', Items.BANNER.white())
                 .define('p', Items.OMINOUS_BOTTLE)
                 .unlockedBy("has_ominous_bottle", has(Items.OMINOUS_BOTTLE))
                 .save(output);

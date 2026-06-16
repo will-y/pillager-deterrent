@@ -12,6 +12,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.BlockEntityTypes;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
@@ -45,8 +46,8 @@ public class PillagerDeterrent implements ModInitializer {
             }
         });
 
-        ((BlockEntityTypeAccessor) BlockEntityType.BANNER).pillagerDeterrent$ValidBlocks().add(ModBlocks.PILLAGER_WARDING_BANNER);
-        ((BlockEntityTypeAccessor) BlockEntityType.BANNER).pillagerDeterrent$ValidBlocks().add(ModBlocks.PILLAGER_WARDING_WALL_BANNER);
+        ((BlockEntityTypeAccessor) BlockEntityTypes.BANNER).pillagerDeterrent$ValidBlocks().add(ModBlocks.PILLAGER_WARDING_BANNER);
+        ((BlockEntityTypeAccessor) BlockEntityTypes.BANNER).pillagerDeterrent$ValidBlocks().add(ModBlocks.PILLAGER_WARDING_WALL_BANNER);
     }
 
     private static Set<BlockState> getPOIBlockStates() {

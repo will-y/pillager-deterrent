@@ -1,6 +1,3 @@
-# Pillager Deterrent 21.6 Changelog
-## 21.6.1.1
-- Updates to Neo 21.6.1.1
-
-## 21.6.1.0
-- Updates to 21.6
+# Pillager Deterrent 26.2 Changelog
+## 26.2.0.0
+- Updates to 26.2.1.0
