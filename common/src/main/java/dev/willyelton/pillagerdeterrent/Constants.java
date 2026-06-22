@@ -2,6 +2,8 @@ package dev.willyelton.pillagerdeterrent;
 
 import com.mojang.logging.LogUtils;
 import dev.willyelton.pillagerdeterrent.platform.Services;
+import dev.willyelton.pillagerdeterrent.tag.PillagerDeterrentTags;
+import dev.willyelton.pillagerdeterrent.util.InventoryUtils;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
@@ -9,7 +11,9 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.block.entity.BannerPattern;
@@ -17,10 +21,14 @@ import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.minecraft.world.level.block.entity.BannerPatterns;
 import org.slf4j.Logger;
 
+import java.util.function.Predicate;
+
 public class Constants {
     public static final String MODID = "pillager_deterrent";
     public static final Logger LOGGER = LogUtils.getLogger();
     public static ResourceKey<PoiType> PILLAGER_DETERRENT_POI_KEY = ResourceKey.create(Registries.POINT_OF_INTEREST_TYPE, rl("pillager_warding_banner"));
+
+    public static final Predicate<ItemStack> WARD_PREDICATE = stack -> stack.is(PillagerDeterrentTags.PILLAGER_WARD);
 
     public static Identifier rl(String path) {
         return Identifier.fromNamespaceAndPath(MODID, path);
@@ -45,5 +53,11 @@ public class Constants {
                 .build();
 
         return new ItemStackTemplate(Services.REGISTRATION.getBannerBlockItem().builtInRegistryHolder(), 1, patch);
+    }
+
+    public static boolean hasPillagerWard(Player player) {
+        return !Services.CURIOS_COMPATIBILITY.getCuriosItems(player, WARD_PREDICATE)
+                .orElse(InventoryUtils.findItem(player.getInventory(), WARD_PREDICATE))
+                .isEmpty();
     }
 }
