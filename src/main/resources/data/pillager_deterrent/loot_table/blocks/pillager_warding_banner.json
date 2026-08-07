@@ -12,13 +12,9 @@
               "source": "block_entity"
             },
             {
-              "function": "minecraft:copy_nbt",
-              "ops": [
-                {
-                  "op": "replace",
-                  "source": "BlockEntityTag",
-                  "target": "BlockEntityTag"
-                }
+              "function": "minecraft:copy_components",
+              "include": [
+                "minecraft:banner_patterns"
               ],
               "source": "block_entity"
             }

@@ -7,5 +7,5 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 
 public class PillagerDeterrentTags {
-    public static final TagKey<Item> PILLAGER_WARD = TagKey.create(Registries.ITEM, new ResourceLocation(PillagerDeterrent.MOD_ID, "pillager_ward"));
+    public static final TagKey<Item> PILLAGER_WARD = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(PillagerDeterrent.MOD_ID, "pillager_ward"));
 }

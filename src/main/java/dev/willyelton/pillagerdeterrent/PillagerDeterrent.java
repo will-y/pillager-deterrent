@@ -6,9 +6,11 @@ import dev.willyelton.pillagerdeterrent.mixin.BlockEntityTypeAccessor;
 import dev.willyelton.pillagerdeterrent.mixin.PoiTypesInvoker;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
+import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.HolderGetter;
+import net.minecraft.core.component.DataComponentPatch;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
@@ -20,6 +22,7 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BannerPattern;
+import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.minecraft.world.level.block.entity.BannerPatterns;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -43,7 +46,7 @@ public class PillagerDeterrent implements ModInitializer {
 	// That way, it's clear which mod wrote info, warnings, and errors.
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	public static ResourceKey<PoiType> PILLAGER_DETERRENT_POI_KEY = ResourceKey.create(Registries.POINT_OF_INTEREST_TYPE, new ResourceLocation(MOD_ID, "pillager_warding_banner"));
+	public static ResourceKey<PoiType> PILLAGER_DETERRENT_POI_KEY = ResourceKey.create(Registries.POINT_OF_INTEREST_TYPE, ResourceLocation.fromNamespaceAndPath(MOD_ID, "pillager_warding_banner"));
 
 
 	@Override
@@ -59,8 +62,8 @@ public class PillagerDeterrent implements ModInitializer {
 					tab.accept(getBannerStack(Minecraft.getInstance().level.holderLookup(Registries.BANNER_PATTERN)));
 				});
 
-		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
-			if (source.isBuiltin() && PILLAGER_OUTPOST.equals(id)) {
+		LootTableEvents.MODIFY.register((key, tableBuilder, source, registries) -> {
+			if (source.isBuiltin() && PILLAGER_OUTPOST.equals(key)) {
 				LootPool.Builder poolBuilder = LootPool.lootPool().add(LootItem.lootTableItem(ModItems.PILLAGER_RING)).setRolls(ConstantValue.exactly(1)).add(EmptyLootItem.emptyItem());
 				tableBuilder.withPool(poolBuilder);
 			}
@@ -72,45 +75,27 @@ public class PillagerDeterrent implements ModInitializer {
 	}
 
 	public static ItemStack getBannerStack(HolderGetter<BannerPattern> patternRegistry) {
-		ItemStack stack = new ItemStack(PILLAGER_WARDING_BANNER_ITEM);
-		CompoundTag tag = new CompoundTag();
+		var patch = getPatch(patternRegistry);
 
-		CompoundTag blockEntityData = getTag(patternRegistry);
-
-		tag.put("BlockEntityTag", blockEntityData);
-
-		stack.setTag(tag);
-
-		return stack;
+		return new ItemStack(PILLAGER_WARDING_BANNER_ITEM.builtInRegistryHolder(), 1, patch);
 	}
 
-	public static CompoundTag getTag(HolderGetter<BannerPattern> patternRegistry) {
-		CompoundTag blockEntityData = new CompoundTag();
-		ListTag listTag = new ListTag();
+	public static DataComponentPatch getPatch(HolderGetter<BannerPattern> patternRegistry) {
+		BannerPatternLayers bannerpatternlayers = new BannerPatternLayers.Builder()
+				.addIfRegistered(patternRegistry, BannerPatterns.RHOMBUS_MIDDLE, DyeColor.CYAN)
+				.addIfRegistered(patternRegistry, BannerPatterns.STRIPE_BOTTOM, DyeColor.LIGHT_GRAY)
+				.addIfRegistered(patternRegistry, BannerPatterns.STRIPE_CENTER, DyeColor.GRAY)
+				.addIfRegistered(patternRegistry, BannerPatterns.BORDER, DyeColor.LIGHT_GRAY)
+				.addIfRegistered(patternRegistry, BannerPatterns.STRIPE_MIDDLE, DyeColor.BLACK)
+				.addIfRegistered(patternRegistry, BannerPatterns.HALF_HORIZONTAL, DyeColor.LIGHT_GRAY)
+				.addIfRegistered(patternRegistry, BannerPatterns.CIRCLE_MIDDLE, DyeColor.LIGHT_GRAY)
+				.addIfRegistered(patternRegistry, BannerPatterns.BORDER, DyeColor.BLACK)
+				.addIfRegistered(patternRegistry, BannerPatterns.CROSS, DyeColor.RED)
+				.build();
 
-
-		blockEntityData.put("Patterns", listTag);
-
-		addPattern(listTag, patternRegistry, BannerPatterns.RHOMBUS_MIDDLE, DyeColor.CYAN);
-		addPattern(listTag, patternRegistry, BannerPatterns.STRIPE_BOTTOM, DyeColor.LIGHT_GRAY);
-		addPattern(listTag, patternRegistry, BannerPatterns.STRIPE_CENTER, DyeColor.GRAY);
-		addPattern(listTag, patternRegistry, BannerPatterns.BORDER, DyeColor.LIGHT_GRAY);
-		addPattern(listTag, patternRegistry, BannerPatterns.STRIPE_MIDDLE, DyeColor.BLACK);
-		addPattern(listTag, patternRegistry, BannerPatterns.HALF_HORIZONTAL, DyeColor.LIGHT_GRAY);
-		addPattern(listTag, patternRegistry, BannerPatterns.CIRCLE_MIDDLE, DyeColor.LIGHT_GRAY);
-		addPattern(listTag, patternRegistry, BannerPatterns.BORDER, DyeColor.BLACK);
-		addPattern(listTag, patternRegistry, BannerPatterns.CROSS, DyeColor.RED);
-
-		return blockEntityData;
-	}
-
-	private static void addPattern(ListTag listTag, HolderGetter<BannerPattern> patternRegistry, ResourceKey<BannerPattern> bannerpattern, DyeColor color) {
-		patternRegistry.get(bannerpattern).ifPresent(bannerPatternReference -> {
-			CompoundTag tag = new CompoundTag();
-			tag.putInt("Color", color.getId());
-			tag.putString("Pattern", bannerPatternReference.value().getHashname());
-			listTag.add(tag);
-		});
+		return DataComponentPatch.builder()
+				.set(DataComponents.BANNER_PATTERNS, bannerpatternlayers)
+				.build();
 	}
 
 	private static Set<BlockState> getPOIBlockStates() {

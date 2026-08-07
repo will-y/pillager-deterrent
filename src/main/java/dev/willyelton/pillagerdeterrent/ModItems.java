@@ -15,7 +15,7 @@ public class ModItems {
     public static final Item PILLAGER_WARDING_BANNER_ITEM = register("pillager_warding_banner", properties -> new PillagerWardingBannerItem(ModBlocks.PILLAGER_WARDING_BANNER, ModBlocks.PILLAGER_WARDING_WALL_BANNER, properties), new Item.Properties());
 
     public static <T extends Item> T register(String name, Function<Item.Properties, T> itemFactory, Item.Properties settings) {
-        ResourceKey<Item> itemKey = ResourceKey.create(Registries.ITEM, new ResourceLocation(PillagerDeterrent.MOD_ID, name));
+        ResourceKey<Item> itemKey = ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(PillagerDeterrent.MOD_ID, name));
         T item = itemFactory.apply(settings);
         Registry.register(BuiltInRegistries.ITEM, itemKey, item);
 
