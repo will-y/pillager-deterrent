@@ -7,14 +7,11 @@ import dev.willyelton.pillagerdeterrent.mixin.PoiTypesInvoker;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
@@ -59,7 +56,7 @@ public class PillagerDeterrent implements ModInitializer {
 		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
 				.register(tab -> {
 					tab.accept(ModItems.PILLAGER_RING);
-					tab.accept(getBannerStack(Minecraft.getInstance().level.holderLookup(Registries.BANNER_PATTERN)));
+					tab.accept(getBannerStack(tab.getContext().holders().lookup(Registries.BANNER_PATTERN).orElseThrow()));
 				});
 
 		LootTableEvents.MODIFY.register((key, tableBuilder, source, registries) -> {
