@@ -36,7 +36,7 @@ public class PillagerDeterrent implements ModInitializer {
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
                 .register((creativeTab) -> {
                     creativeTab.accept(ModItems.PILLAGER_RING);
-                    creativeTab.accept(getBannerStack(Minecraft.getInstance().level.holderLookup(Registries.BANNER_PATTERN)).create());
+                    creativeTab.accept(getBannerStack(creativeTab.getContext().holders().lookup(Registries.BANNER_PATTERN).orElseThrow()).create());
                 });
 
         LootTableEvents.MODIFY.register((key, tableBuilder, source, registries) -> {
