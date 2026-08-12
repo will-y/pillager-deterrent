@@ -2,6 +2,7 @@ package dev.willyelton.pillagerdeterrent;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
+import dev.willyelton.pillagerdeterrent.config.PillagerDeterrentConfig;
 import dev.willyelton.pillagerdeterrent.mixin.BlockEntityTypeAccessor;
 import dev.willyelton.pillagerdeterrent.mixin.PoiTypesInvoker;
 import net.fabricmc.api.ModInitializer;
@@ -25,6 +26,9 @@ import static dev.willyelton.pillagerdeterrent.Constants.getBannerStack;
 import static net.minecraft.world.level.storage.loot.BuiltInLootTables.PILLAGER_OUTPOST;
 
 public class PillagerDeterrent implements ModInitializer {
+
+    public static PillagerDeterrentConfig CONFIG = PillagerDeterrentConfig.createAndLoad();
+
     @Override
     public void onInitialize() {
         ModItems.init();

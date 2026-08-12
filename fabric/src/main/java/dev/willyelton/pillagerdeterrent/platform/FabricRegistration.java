@@ -1,6 +1,7 @@
 package dev.willyelton.pillagerdeterrent.platform;
 
 import dev.willyelton.pillagerdeterrent.ModItems;
+import dev.willyelton.pillagerdeterrent.PillagerDeterrent;
 import dev.willyelton.pillagerdeterrent.platform.services.RegistrationHelper;
 import net.minecraft.world.item.Item;
 
@@ -12,6 +13,6 @@ public class FabricRegistration implements RegistrationHelper {
 
     @Override
     public int bannerRange() {
-        return 128;
+        return PillagerDeterrent.CONFIG.bannerRange();
     }
 }
