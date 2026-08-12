@@ -1,5 +1,6 @@
 package dev.willyelton.pillagerdeterrent.item;
 
+import dev.willyelton.pillagerdeterrent.PillagerDeterrent;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -24,7 +25,7 @@ public class PillagerWardingBannerItem extends BannerItem {
 
     @Override
     public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag) {
-        list.add(Component.translatable("lore.pillager_deterrent.banner", 128).withStyle(STYLE));
+        list.add(Component.translatable("lore.pillager_deterrent.banner", PillagerDeterrent.CONFIG.bannerRange()).withStyle(STYLE));
     }
 
     @Override
