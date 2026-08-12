@@ -2,8 +2,10 @@ package dev.willyelton.pillagerdeterrent;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
+import dev.willyelton.pillagerdeterrent.config.PillagerDeterrentConfig;
 import dev.willyelton.pillagerdeterrent.mixin.BlockEntityTypeAccessor;
 import dev.willyelton.pillagerdeterrent.mixin.PoiTypesInvoker;
+import eu.midnightdust.lib.config.MidnightConfig;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
@@ -21,6 +23,7 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 
 import java.util.Set;
 
+import static dev.willyelton.pillagerdeterrent.Constants.MODID;
 import static dev.willyelton.pillagerdeterrent.Constants.PILLAGER_DETERRENT_POI_KEY;
 import static dev.willyelton.pillagerdeterrent.Constants.getBannerStack;
 import static net.minecraft.world.level.storage.loot.BuiltInLootTables.PILLAGER_OUTPOST;
@@ -30,6 +33,7 @@ public class PillagerDeterrent implements ModInitializer {
     public void onInitialize() {
         ModItems.init();
         ModBlocks.init();
+        MidnightConfig.init(MODID, PillagerDeterrentConfig.class);
 
         PoiTypesInvoker.invokeRegister(BuiltInRegistries.POINT_OF_INTEREST_TYPE, PILLAGER_DETERRENT_POI_KEY, getPOIBlockStates(), 0, 1);
 
