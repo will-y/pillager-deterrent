@@ -7,7 +7,6 @@ import dev.willyelton.pillagerdeterrent.mixin.BlockEntityTypeAccessor;
 import dev.willyelton.pillagerdeterrent.mixin.PoiTypesInvoker;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.component.DataComponentPatch;

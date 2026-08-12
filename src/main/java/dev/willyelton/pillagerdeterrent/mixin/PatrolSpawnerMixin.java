@@ -36,7 +36,7 @@ public abstract class PatrolSpawnerMixin {
     @Unique
     private static ItemStack pillager_deterrent$findPillagerWard(Player player) {
         Predicate<ItemStack> wardPredicate = stack -> stack.is(PillagerDeterrentTags.PILLAGER_WARD);
-        return InventoryUtils.findItem(player.getInventory(), wardPredicate);
+        return InventoryUtils.findItem(player, wardPredicate);
     }
 
     @Unique
