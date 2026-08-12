@@ -25,7 +25,7 @@ public class PillagerWardingBannerItem extends BannerItem {
 
     @Override
     public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> list, TooltipFlag tooltipFlag) {
-        list.add(Component.translatable("lore.pillager_deterrent.banner", 128).withStyle(STYLE));
+        list.add(Component.translatable("lore.pillager_deterrent.banner", PillagerDeterrent.CONFIG.bannerRange()).withStyle(STYLE));
     }
 
     @Override

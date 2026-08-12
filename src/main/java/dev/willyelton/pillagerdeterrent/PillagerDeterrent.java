@@ -2,12 +2,12 @@ package dev.willyelton.pillagerdeterrent;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
+import dev.willyelton.pillagerdeterrent.config.PillagerDeterrentConfig;
 import dev.willyelton.pillagerdeterrent.mixin.BlockEntityTypeAccessor;
 import dev.willyelton.pillagerdeterrent.mixin.PoiTypesInvoker;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -45,6 +45,7 @@ public class PillagerDeterrent implements ModInitializer {
 
 	public static ResourceKey<PoiType> PILLAGER_DETERRENT_POI_KEY = ResourceKey.create(Registries.POINT_OF_INTEREST_TYPE, new ResourceLocation(MOD_ID, "pillager_warding_banner"));
 
+	public static PillagerDeterrentConfig CONFIG = PillagerDeterrentConfig.createAndLoad();
 
 	@Override
 	public void onInitialize() {
@@ -68,7 +69,6 @@ public class PillagerDeterrent implements ModInitializer {
 
 		((BlockEntityTypeAccessor) BlockEntityType.BANNER).pillagerDeterrent$ValidBlocks().add(ModBlocks.PILLAGER_WARDING_BANNER);
 		((BlockEntityTypeAccessor) BlockEntityType.BANNER).pillagerDeterrent$ValidBlocks().add(ModBlocks.PILLAGER_WARDING_WALL_BANNER);
-
 	}
 
 	public static ItemStack getBannerStack(HolderGetter<BannerPattern> patternRegistry) {
