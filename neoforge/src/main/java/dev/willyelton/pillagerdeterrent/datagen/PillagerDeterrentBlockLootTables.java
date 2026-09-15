@@ -1,12 +1,11 @@
 package dev.willyelton.pillagerdeterrent.datagen;
 
 import dev.willyelton.pillagerdeterrent.Constants;
-import dev.willyelton.pillagerdeterrent.PillagerDeterrent;
 import dev.willyelton.pillagerdeterrent.Registration;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.data.loot.packs.VanillaBlockLoot;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -14,17 +13,17 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
+import net.minecraft.world.level.storage.loot.entries.UniformContainerBase;
 import net.minecraft.world.level.storage.loot.functions.CopyComponentsFunction;
 import net.minecraft.world.level.storage.loot.functions.CopyNameFunction;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class PillagerDeterrentBlockLootTables extends VanillaBlockLoot {
-    public PillagerDeterrentBlockLootTables(HolderLookup.Provider registries) {
-        super(registries);
+    public PillagerDeterrentBlockLootTables(LootTableSubProvider.Context context) {
+        super(context);
     }
 
     @Override
@@ -34,7 +33,7 @@ public class PillagerDeterrentBlockLootTables extends VanillaBlockLoot {
     }
 
     @Override
-    protected Iterable<Block> getKnownBlocks() {
+    public Iterable<Block> getKnownBlocks() {
         return BuiltInRegistries.BLOCK.entrySet().stream()
                 .filter(e -> e.getKey().identifier().getNamespace().equals(Constants.MODID))
                 .map(Map.Entry::getValue)
@@ -42,7 +41,7 @@ public class PillagerDeterrentBlockLootTables extends VanillaBlockLoot {
     }
 
     private void createComponentSavingTable(Block block, ItemLike item, DataComponentType<?>... dataComponents) {
-        LootPoolSingletonContainer.Builder<?> lti = LootItem.lootTableItem(item);
+        UniformContainerBase.Builder<?> lti = LootItem.lootTableItem(item);
         lti.apply(CopyNameFunction.copyName(LootContext.BlockEntityTarget.BLOCK_ENTITY));
 
         CopyComponentsFunction.Builder copyComponentsFunctionBuilder = CopyComponentsFunction.copyComponentsFromBlockEntity(LootContext.BlockEntityTarget.BLOCK_ENTITY.contextParam());
@@ -53,7 +52,7 @@ public class PillagerDeterrentBlockLootTables extends VanillaBlockLoot {
         lti.apply(copyComponentsFunctionBuilder);
 
         LootPool.Builder builder = LootPool.lootPool()
-                .setRolls(ConstantValue.exactly(1))
+                .setRolls(ContextIntProviders.exactly(1))
                 .add(lti);
         add(block, LootTable.lootTable().withPool(builder));
     }

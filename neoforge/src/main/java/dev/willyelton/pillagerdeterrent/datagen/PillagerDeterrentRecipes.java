@@ -1,29 +1,25 @@
 package dev.willyelton.pillagerdeterrent.datagen;
 
-import dev.willyelton.pillagerdeterrent.Constants;
-import dev.willyelton.pillagerdeterrent.PillagerDeterrent;
 import dev.willyelton.pillagerdeterrent.Registration;
-import net.minecraft.core.HolderLookup;
+import net.minecraft.advancements.Advancement;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.packs.VanillaRecipeProvider;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.world.item.Items;
-
-import java.util.concurrent.CompletableFuture;
+import net.minecraft.world.item.crafting.Recipe;
 
 import static dev.willyelton.pillagerdeterrent.Constants.getBannerStack;
 
-public class PillagerDeterrentRecipes extends RecipeProvider {
-    public PillagerDeterrentRecipes(HolderLookup.Provider registries, RecipeOutput output) {
-        super(registries, output);
+public class PillagerDeterrentRecipes extends VanillaRecipeProvider {
+    public PillagerDeterrentRecipes(BootstrapContext<Recipe<?>> recipeOutput, BootstrapContext<Advancement> advancementOutput) {
+        super(recipeOutput, advancementOutput);
     }
 
     @Override
     protected void buildRecipes() {
-        ShapedRecipeBuilder.shaped(registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, getBannerStack(registries.lookupOrThrow(Registries.BANNER_PATTERN)))
+        ShapedRecipeBuilder.shaped(output.lookup(Registries.ITEM), RecipeCategory.MISC, getBannerStack(output.lookup(Registries.BANNER_PATTERN)))
                 .pattern("rgr")
                 .pattern(" b ")
                 .pattern("rpr")
@@ -42,21 +38,5 @@ public class PillagerDeterrentRecipes extends RecipeProvider {
                 .define('p', Items.OMINOUS_BOTTLE)
                 .unlockedBy("has_ominous_bottle", has(Items.OMINOUS_BOTTLE))
                 .save(output);
-    }
-
-    public static class Runner extends RecipeProvider.Runner {
-        public Runner(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-            super(output, lookupProvider);
-        }
-
-        @Override
-        protected RecipeProvider createRecipeProvider(HolderLookup.Provider provider, RecipeOutput output) {
-            return new PillagerDeterrentRecipes(provider, output);
-        }
-
-        @Override
-        public String getName() {
-            return Constants.MODID + ":recipes";
-        }
     }
 }

@@ -1,0 +1,7 @@
+// 26.3	2026-09-15T18:55:49.3666958	Registries for reloadable
+7ebddc9092a4100aee76da78b3777ccac5b30c13 data/pillager_deterrent/advancement/recipes/misc/pillager_ring.json
+fbc4820572432a825f4972444c6d5489397b3feb data/pillager_deterrent/advancement/recipes/misc/pillager_warding_banner.json
+e0a9b00599cfbd1d24b116c940aef0e827a1af6b data/pillager_deterrent/loot_table/blocks/pillager_warding_banner.json
+dd8031c625305b68608d613935b6bb1386b4f8cf data/pillager_deterrent/loot_table/pillager_outpost.json
+aeac81b300036ff52558b372430df3a493a4ef9b data/pillager_deterrent/recipe/pillager_ring.json
+8026b31bcbb690b567dc8c8ad1c24dd452c30b39 data/pillager_deterrent/recipe/pillager_warding_banner.json

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "pillager_deterrent:pillager_warding_banner"
+        "recipes": "pillager_deterrent:pillager_warding_banner"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

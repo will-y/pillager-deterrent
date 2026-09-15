@@ -26,7 +26,10 @@ import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.minecraft.world.level.block.entity.BannerPatterns;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.loot.LootTableIdCondition;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -62,6 +65,7 @@ public class Registration {
                         output.accept(PILLAGER_RING.get());
                         output.accept(getBannerStack(flags.holders().lookupOrThrow(Registries.BANNER_PATTERN)).create());
                     }).build());
+
 
     public static void init(IEventBus modEventBus) {
         ITEMS.register(modEventBus);
