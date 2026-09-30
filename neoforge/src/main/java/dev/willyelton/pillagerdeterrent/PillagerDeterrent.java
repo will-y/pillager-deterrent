@@ -10,6 +10,6 @@ public class PillagerDeterrent {
     public PillagerDeterrent(IEventBus modEventBus, ModContainer container) {
         Registration.init(modEventBus);
 
-        container.registerConfig(ModConfig.Type.SERVER, Config.SPEC, "pillager_deterrent.toml");
+        container.registerConfig(ModConfig.Type.SYNCED, Config.SPEC, "pillager_deterrent.toml");
     }
 }
